@@ -16,16 +16,11 @@ public class HandleThePopup {
     String alertMessage;
     @Given("open the web page")
     public void open_the_web_page() throws Exception {
-        webDriverProvider.setBrowser(Browser.CHROME).setCustomRetry(5, 200).open("https://www.browserstack.com/users/sign_up");
+        webDriverProvider.setBrowser(Browser.CHROME).setCustomRetry(5, 200).open("https://javascript.info/alert-prompt-confirm");
     }
     @When("get the Popup")
     public void get_the_popup() throws Exception {
-        webDriverProvider.getTypeCommand().setCustomRetry(10, 2000).type(ElementIdentifier.ID, "user_full_name", "ishara weerasingha");
-        webDriverProvider.getTypeCommand().setCustomRetry(10, 2000).type(ElementIdentifier.ID, "user_email_login", "mgisharaonline@gmail.com");
-        webDriverProvider.getTypeCommand().setCustomRetry(10, 2000).type(ElementIdentifier.ID, "user_password", "Ishwee123@");
-        webDriverProvider.getClickCommand().setCustomRetry(10, 2000).click(ElementIdentifier.ID, "accept-cookie-notification-cross-icon");
-        webDriverProvider.getClickCommand().setCustomRetry(10, 2000).click(ElementIdentifier.ID, "user_submit");
-        Thread.sleep(5000);
+        webDriverProvider.getClickCommand().setCustomRetry(10, 2000).click(ElementIdentifier.XPATH, "//a[@class='toolbar__button toolbar__button_run']");
 
         Alert alert = webDriverProvider.getSelectPopupCommand().setCustomRetry(10, 2000).selectPop();
         alertMessage= webDriverProvider.getSelectPopupCommand().setCustomRetry(10, 2000).getTextPopup();
@@ -34,7 +29,6 @@ public class HandleThePopup {
     @Then("handling the popup")
     public void handling_the_popup() throws Exception {
         logger.info( alertMessage);
-        Thread.sleep(5000);
         webDriverProvider.getSelectPopupCommand().setCustomRetry(10, 2000).acceptPopup();
     }
 }
