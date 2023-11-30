@@ -23,6 +23,7 @@ public class HandleThePopup {
         webDriverProvider.getTypeCommand().setCustomRetry(10, 2000).type(ElementIdentifier.ID, "user_full_name", "ishara weerasingha");
         webDriverProvider.getTypeCommand().setCustomRetry(10, 2000).type(ElementIdentifier.ID, "user_email_login", "mgisharaonline@gmail.com");
         webDriverProvider.getTypeCommand().setCustomRetry(10, 2000).type(ElementIdentifier.ID, "user_password", "Ishwee123@");
+        webDriverProvider.getClickCommand().setCustomRetry(10, 2000).click(ElementIdentifier.ID, "accept-cookie-notification-cross-icon");
         webDriverProvider.getClickCommand().setCustomRetry(10, 2000).click(ElementIdentifier.ID, "user_submit");
         Thread.sleep(5000);
 
